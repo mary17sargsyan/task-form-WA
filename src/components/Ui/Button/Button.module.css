@@ -1,0 +1,38 @@
+.Button {
+   
+    display: block;
+    font-size: 15px !important;
+    margin-top: 5% !important;
+    width: 110px !important;
+    height: 35px;
+    padding: 6px  10px !important;
+    background-color: #ffffff !important;
+    color: #51c2d5  !important;
+    border: 1px solid #51c2d5 !important;
+    border-radius: 5px !important;
+    transition: all 0.2s ease 0.4s;
+}
+.Button:focus{
+    border: 1px solid #51c2d5 !important;
+    border-radius: 5px !important;
+    border: none;
+}
+.Button:hover {
+   
+    border: 1px solid #303030!important;
+    border-radius: 40px !important;
+    color: #272727 !important;
+    transition: all 0.2s ease 0.4s;
+}
+.Button:disabled{
+    color: red;
+    background-color: slategrey;
+}
+
+
+
+
+
+
+
+
