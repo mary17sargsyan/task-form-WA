@@ -95,7 +95,9 @@ if(id==='firstName' || id==='lastName'  || id==='city' || id==='address'   || id
         }
     }
     if(id === 'email'){ 
-        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)){
+        //
+
+        if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)){
             if(value.length<=controls[id].rules.min || value.length>= controls[id].rules.max){
                 return(false)
             } else{

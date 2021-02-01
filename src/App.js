@@ -93,9 +93,7 @@ class App extends Component{
       if(key==='dataForShipping' ){
         checked=true;
       }
-      console.log(key, this.state.firstStepControl[key].value )
       if( this.state.firstStepControl[key].valide && this.state.firstStepControl[key].value!==''){
-        console.log('key', key)
         checked=true;
       }
      
@@ -107,11 +105,9 @@ class App extends Component{
     }else{
       activate=this.state.step;
     }
-     console.log('haf')
      break;
           case 2:
               let checked2=false;
-              console.log(checked2, this.state.step);
               for(let key in this.state.secondStepControl){
                 if(key==='premiumPackage' || key==='standartPackage'){
                   if(this.state.secondStepControl['premiumPackage'].value===false && this.state.secondStepControl['standartPackage'].value===false  ){
@@ -120,14 +116,17 @@ class App extends Component{
                     break;
                   }
                 }
-                if(!this.state.secondStepControl[key].valide  ||  this.state.secondStepControl[key].value.length==='' || key!=='premiumPackage' ||  key!=='standartPackage' ){
-                  checked2=false;
+              
+                if(!this.state.secondStepControl[key].valide ||  this.state.secondStepControl[key].value === '' ){
+                  if((key!=='premiumPackage' &&  key!=='standartPackage' )){
+                    checked2=false;
                   err= 'Check All Inputs';
                   break;
+                  }
+                  
                 }
                 
-                if( this.state.firstStepControl[key].valide && this.state.firstStepControl[key].value!==''){
-                  console.log('key', key)
+                if( this.state.secondStepControl[key].valide && this.state.secondStepControl[key].value!==''){
                   checked2=true;
                 }
               }
@@ -140,32 +139,6 @@ class App extends Component{
           
        
               
-      /*        for(let key in this.state.secondStepControl){
-                if(key==='premiumPackage' || key==='standartPackage'){
-                  if(this.state.secondStepControl['premiumPackage'].value===false && this.state.secondStepControl['standartPackage'].value===false  ){
-                    err= 'For the next step must be choosen paskage';
-                    checked2=false
-                     break;
-                  }else{
-                    //checked2=true;
-                  }
-                  
-
-                } else if(!this.state.secondStepControl[key].valide  ||  this.state.secondStepControl[key].value.length==='' || key!=='premiumPackage' ||  key!=='standartPackage' ){
-                  checked2=false;
-                  break;
-                } else{
-
-                }
-                console.log(checked2)
-              if(checked2===true){
-                  activate=count+1;
-                }else{
-                  activate=this.state.step;
-                }
-                  }
-                */
-
            
              break;
 
