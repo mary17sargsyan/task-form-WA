@@ -51,7 +51,9 @@ if(id==='card'){
         let code;
         for(let key in countryList){
         if(controls.country.value){
-            if( countryList[key].name===controls.country.value){
+            let country;
+            id==='postalCode'?country='country':country='shippingCountry'
+            if( countryList[key].name===controls[country].value){
                 let postalCodes=countryList[key].postalCode;
                 let found = postalCodes.find(element => element == value);
                 if(found){
@@ -195,6 +197,16 @@ if(controlName==='country' && controls['postalCode'].value ){
               })
            })
  }
+
+
+ if(controlName==='shippingCountry' && controls['shippingPostalCode'].value ){
+    updateControl = updateObject(updateControl, {...updateControl,
+        ['shippingPostalCode']: updateObject(controls['shippingPostalCode'], {
+            value: updateControl['shippingPostalCode'].value,
+           valide: checkValidity(updateControl['shippingPostalCode'].value, updateControl,'shippingPostalCode', countryList)
+         })
+      })
+}
 
 
 

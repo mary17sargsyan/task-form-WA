@@ -80,15 +80,27 @@ class App extends Component{
       let successful;
       switch(this.state.step){
         case 1:
+          let checked=false;
           for(let key in this.state.firstStepControl){
-            if(this.state.firstStepControl[key].valide && this.state.firstStepControl[key].value>0){
-              err=''
-              activate=count+1;   
-            }else{
-              err= 'check All'
-              activate=this.state.step;
-            }
-            }
+    
+    if(this.state.firstStepControl[key].value==='' || !this.state.firstStepControl[key].valide || key!=='dataForShipping'){
+      checked=false;
+      break;
+    }else{
+      if(key==='dataForShipping' ){
+        checked=true;
+      }else if( this.state.firstStepControl[key].valide && this.state.firstStepControl[key].value===''){
+        checked=true;
+      }
+     
+    }
+    if(checked){
+      activate=count+1;
+    }else{
+      activate=this.state.step;
+    }
+
+          }
             break;
             case 2:
               for(let key in this.state.secondStepControl){

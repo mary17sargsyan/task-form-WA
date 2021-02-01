@@ -89,6 +89,7 @@ export const firstStepControls = {
           type: 'checkbox',
       },
       label:"Use filled data for shipping",
+      valide: true,
       value: true,
       rules:{
        
