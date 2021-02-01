@@ -181,7 +181,7 @@ password: {
     value: '',
     rules:{
       max: 50,
-      min: 2
+      min: 6
     },
     valide:true
     
@@ -195,7 +195,7 @@ repeatPassword: {
     value:  '',
     rules:{
       max: 50,
-      min: 2
+      min: 6
     },
     valide: true
     
@@ -208,7 +208,7 @@ standartPackage:{
   label:"Standart paskage",
   value: false,
   
- 
+  valide: true
 },
 
 premiumPackage: {
@@ -218,6 +218,7 @@ premiumPackage: {
   },
   label:"Premium package",
   value:  false,  
+  valide: true
 },
   }
 }

@@ -78,54 +78,106 @@ class App extends Component{
       let activate;
       let err=''
       let successful;
+
       switch(this.state.step){
         case 1:
           let checked=false;
+        
           for(let key in this.state.firstStepControl){
-    
-    if(this.state.firstStepControl[key].value==='' || !this.state.firstStepControl[key].valide || key!=='dataForShipping'){
+           
+    if(this.state.firstStepControl[key].value==='' || !this.state.firstStepControl[key].valide && key!=='dataForShipping' ){
+      err='empty or invalid'
       checked=false;
       break;
     }else{
       if(key==='dataForShipping' ){
         checked=true;
-      }else if( this.state.firstStepControl[key].valide && this.state.firstStepControl[key].value===''){
+      }
+      console.log(key, this.state.firstStepControl[key].value )
+      if( this.state.firstStepControl[key].valide && this.state.firstStepControl[key].value!==''){
+        console.log('key', key)
         checked=true;
       }
      
     }
-    if(checked){
+   
+     }
+     if(checked){
       activate=count+1;
     }else{
       activate=this.state.step;
     }
-
-          }
-            break;
-            case 2:
+     console.log('haf')
+     break;
+          case 2:
+              let checked2=false;
+              console.log(checked2, this.state.step);
               for(let key in this.state.secondStepControl){
                 if(key==='premiumPackage' || key==='standartPackage'){
                   if(this.state.secondStepControl['premiumPackage'].value===false && this.state.secondStepControl['standartPackage'].value===false  ){
                     err= 'For the next step must be choosen paskage';
-                   activate=this.state.step;
-                  }else{
-                    activate=count+1;
+                    checked2=false;
+                    break;
                   }
-                }else  if(this.state.secondStepControl[key].valide && this.state.secondStepControl[key].value>0){
-                  activate=count+1;
-                } 
-
+                }
+                if(!this.state.secondStepControl[key].valide  ||  this.state.secondStepControl[key].value.length==='' || key!=='premiumPackage' ||  key!=='standartPackage' ){
+                  checked2=false;
+                  err= 'Check All Inputs';
+                  break;
+                }
+                
+                if( this.state.firstStepControl[key].valide && this.state.firstStepControl[key].value!==''){
+                  console.log('key', key)
+                  checked2=true;
+                }
               }
+
+              if(checked2){
+                activate=count+1
+                              }else{
+                                activate=this.state.step;
+                              }
+          
+       
+              
+      /*        for(let key in this.state.secondStepControl){
+                if(key==='premiumPackage' || key==='standartPackage'){
+                  if(this.state.secondStepControl['premiumPackage'].value===false && this.state.secondStepControl['standartPackage'].value===false  ){
+                    err= 'For the next step must be choosen paskage';
+                    checked2=false
+                     break;
+                  }else{
+                    //checked2=true;
+                  }
+                  
+
+                } else if(!this.state.secondStepControl[key].valide  ||  this.state.secondStepControl[key].value.length==='' || key!=='premiumPackage' ||  key!=='standartPackage' ){
+                  checked2=false;
+                  break;
+                } else{
+
+                }
+                console.log(checked2)
+              if(checked2===true){
+                  activate=count+1;
+                }else{
+                  activate=this.state.step;
+                }
+                  }
+                */
+
+           
              break;
 
             case 3:
-          
-              for(let key in this.state.thirdStepControl){      
+          console.log('haf')
+              for(let key in this.state.thirdStepControl){    
                 if(this.state.thirdStepControl[key].valide && this.state.thirdStepControl[key].value !== ''){            
                   activate=this.state.step+1;
                 }else{
                   err= 'Check all'
                   activate=this.state.step
+                  break;
                 }   
                 }
                 break;
